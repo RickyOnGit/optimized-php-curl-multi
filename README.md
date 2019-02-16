@@ -28,13 +28,20 @@ http://php.net/manual/it/function.curl-multi-add-handle.php#122964
 
 As default options inside the main class there are:
 
-curl_setopt($x, CURLOPT_URL, $y); 
-curl_setopt($x, CURLOPT_HEADER, 0); 
-curl_setopt($x, CURLOPT_FOLLOWLOCATION, 1); 
-curl_setopt($x, CURLOPT_RETURNTRANSFER, 1); 
+curl_setopt($x, CURLOPT_URL, $y);
+
+curl_setopt($x, CURLOPT_HEADER, 0);
+
+curl_setopt($x, CURLOPT_FOLLOWLOCATION, 1);
+
+curl_setopt($x, CURLOPT_RETURNTRANSFER, 1);
+
 // curl_setopt($x, CURLOPT_TCP_FASTOPEN, 1); /* UNCOMMENT THIS LINE ONLY IF LIBCURL VERSION IS EQUAL OR GRATER THAN 7.49.0 */ 
-curl_setopt($x, CURLOPT_ENCODING, "gzip,deflate"); 
-curl_setopt($x, CURLOPT_SSL_VERIFYPEER, 0); 
+
+curl_setopt($x, CURLOPT_ENCODING, "gzip,deflate");
+
+curl_setopt($x, CURLOPT_SSL_VERIFYPEER, 0);
+
 curl_setopt($x, CURLOPT_SSL_VERIFYHOST, 0);
 
 obviously you can change this options, according to your needs and according
