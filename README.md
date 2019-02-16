@@ -1,8 +1,13 @@
 # optimized-php-curl-multi
 Fast and optimized php curl multi request for rest api
+
 #Author Riccardo Castagna
-#email: 3315954155@libero.it 
+
+#email: 3315954155@libero.it
+
 #cUrl Multi fast simple and stable.
+
+https://www.phpclasses.org/package/10875-PHP-Retrieve-the-content-of-multiple-URLs-using-CURL.html
 
 The cUrl_extension is one of the most important extensions of the PHP especially when we have to interface with external APIs and we must communicate with other applications.
 
