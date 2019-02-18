@@ -37,7 +37,7 @@ curl_setopt($x, CURLOPT_URL, $y);<br>
 curl_setopt($x, CURLOPT_HEADER, 0);<br>
 curl_setopt($x, CURLOPT_FOLLOWLOCATION, 1);<br>
 curl_setopt($x, CURLOPT_RETURNTRANSFER, 1);<br>
-// curl_setopt($x, CURLOPT_TCP_FASTOPEN, 1);<br>  
+// curl_setopt($x, CURLOPT_TCP_FASTOPEN, 1);  
 /* UNCOMMENT THE LINE ABOVE ONLY IF LIBCURL VERSION IS EQUAL OR GRATER THAN 7.49.0 */<br>
 curl_setopt($x, CURLOPT_ENCODING, "gzip,deflate");<br>
 curl_setopt($x, CURLOPT_SSL_VERIFYPEER, 0);<br>
@@ -116,21 +116,19 @@ index.php and index3.php are simple multi requests to some endpoint through the 
 index2.php is an example using multi requests to the rest api of the open data of public transport of Palermo city to get information about three bus stops concurrently, through the function "multicurlRestApi($urlarray, $postfield, $headers);" set in php class file class.curlmulti.php.
 
 ---------------------------------------------------------------------------------------------
-EXAMPLE 2: index2.php
+EXAMPLE 2: index2.php <br>
 
-include_once("./lib/class.curlmulti.php"); 
-$ref= new cURmultiStable;
+include_once("./lib/class.curlmulti.php");<br> 
+$ref= new cURmultiStable;<br>
 $urllinkarray = array('https://api.moovitapp.com/services-app/services/EX/API/GetStopArrivals',
-'https://api.moovitapp.com/services-app/services/EX/API/GetStopArrivals','https://api.moovitapp.com/services-app/services/EX/API/GetStopArrivals');
-$postfield = array("{\n\t\"stopKey\": \"1258\"\n}", "{\n\t\"stopKey\": \"1259\"\n}", "{\n\t\"stopKey\": \"1260\"\n}");
+'https://api.moovitapp.com/services-app/services/EX/API/GetStopArrivals','https://api.moovitapp.com/services-app/services/EX/API/GetStopArrivals');<br>
+$postfield = array("{\n\t\"stopKey\": \"1258\"\n}", "{\n\t\"stopKey\": \"1259\"\n}", "{\n\t\"stopKey\": \"1260\"\n}");<br>
 $headers = array(array("api_key: amat_palermo_2317885288","content-type: application/json","user_loc: (38.115093,13.356520)"),
 array("api_key: amat_palermo_2317885288","content-type: application/json","user_loc: (38.115093,13.356520)"), 
-array("api_key: amat_palermo_2317885288","content-type: application/json","user_loc: (38.115093,13.356520)")); 
-$urls = $ref->multicurlRestApi($urllinkarray, $postfield, $headers);
-echo $urls[0];
-echo "<br>";
-echo $urls[1];
-echo "<br>";
+array("api_key: amat_palermo_2317885288","content-type: application/json","user_loc: (38.115093,13.356520)"));<br> 
+$urls = $ref->multicurlRestApi($urllinkarray, $postfield, $headers);<br>
+echo $urls[0];<br>
+echo $urls[1];<br>
 echo $urls[2];
 ----------------------------------------------------------------------------------------------
 Simple, fast and easy ... And no CPU problems !!! 
