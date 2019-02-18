@@ -47,8 +47,8 @@ obviously you can change this options, according to your needs and according
 to your libcurl version (view: https://curl.haxx.se/libcurl/c/symbols-in-versions.html) 
 editing the main class file: ./lib/class.curlmulti.php  
 private function set_option($x, $y)  
---------------------------------------------------------------------------------------------
-Usage:
+--------------------------------------------------------------------------------------------<br>
+Simple usage:
  
 include_once("./lib/class.curlmulti.php"); 
 $ref= new cURmultiStable;
@@ -63,7 +63,7 @@ $urls = $ref->runmulticurl($urllinkarray);
 foreach ($urls as $value){
 echo $value; 
 }
-----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------<br>
 
 OR:
 
@@ -78,7 +78,7 @@ $urllinkarray = array('http://php.net/manual/it/function.curl-multi-add-handle.p
 $urls = $ref->runmulticurl($urllinkarray);
 
 echo $urls[0],$urls[1],$urls[2];  
----------------------------------------------------------------------------------------------- 
+----------------------------------------------------------------------------------------------<br> 
 OR:
 
 include_once("./lib/class.curlmulti.php"); 
@@ -90,7 +90,7 @@ $urls = $ref->runmulticurl(array('http://php.net/manual/it/function.curl-multi-a
 ));
 
 echo $urls[0],$urls[1],$urls[2];
-----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------<br>
 OR for a single request:
 
 include_once("./lib/class.curlmulti.php"); 
@@ -103,7 +103,7 @@ echo $urls[0];
 foreach ($urls as $value){
 echo $value; 
 }
----------------------------------------------------------------------------------------------- 
+----------------------------------------------------------------------------------------------<br> 
 
 There are 3 example file:
 
@@ -115,7 +115,8 @@ index.php and index3.php are simple multi requests to some endpoint through the 
 
 index2.php is an example using multi requests to the rest api of the open data of public transport of Palermo city to get information about three bus stops concurrently, through the function "multicurlRestApi($urlarray, $postfield, $headers);" set in php class file class.curlmulti.php.
 
----------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------<br>
+Rest Api usage:<br> 
 EXAMPLE 2: index2.php <br>
 
 include_once("./lib/class.curlmulti.php");<br> 
@@ -130,5 +131,5 @@ $urls = $ref->multicurlRestApi($urllinkarray, $postfield, $headers);<br>
 echo $urls[0];<br>
 echo $urls[1];<br>
 echo $urls[2];
-----------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------<br>
 Simple, fast and easy ... And no CPU problems !!! 
