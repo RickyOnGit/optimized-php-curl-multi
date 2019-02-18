@@ -1,4 +1,4 @@
-# optimized-php-curl-multi
+# Optimized-php-curl-multi
 Fast and optimized php curl multi request for rest api
 
 #Author Riccardo Castagna
@@ -13,7 +13,7 @@ The cUrl_extension is one of the most important extensions of the PHP especially
 
 During a project that I was carrying out, where I needed to make multiple and simultaneous asynchronous requests, I came across a problem with the cUrl_Multi, which, after some vain but useful research, some analysis and many tests I developed a solution through an insight.
 
-The problem is when you use the cUrl Multi with arrays to add the handles because it can cause the loss of some requests.
+The problem is when you use the cUrl Multi with arrays to add the handles, because it can cause the loss of some requests.
  
 Well, sometime the solutions are complex and sometime are simple.
 
@@ -34,19 +34,13 @@ http://php.net/manual/it/function.curl-multi-add-handle.php#122964
 As default options inside the main class there are:
 
 curl_setopt($x, CURLOPT_URL, $y);
-
 curl_setopt($x, CURLOPT_HEADER, 0);
-
 curl_setopt($x, CURLOPT_FOLLOWLOCATION, 1);
-
 curl_setopt($x, CURLOPT_RETURNTRANSFER, 1);
-
-// curl_setopt($x, CURLOPT_TCP_FASTOPEN, 1); /* UNCOMMENT THIS LINE ONLY IF LIBCURL VERSION IS EQUAL OR GRATER THAN 7.49.0 */ 
-
+// curl_setopt($x, CURLOPT_TCP_FASTOPEN, 1);  
+/* UNCOMMENT THE LINE ABOVE ONLY IF LIBCURL VERSION IS EQUAL OR GRATER THAN 7.49.0 */
 curl_setopt($x, CURLOPT_ENCODING, "gzip,deflate");
-
 curl_setopt($x, CURLOPT_SSL_VERIFYPEER, 0);
-
 curl_setopt($x, CURLOPT_SSL_VERIFYHOST, 0);
 
 obviously you can change this options, according to your needs and according
@@ -110,6 +104,33 @@ foreach ($urls as $value){
 echo $value; 
 }
 ---------------------------------------------------------------------------------------------- 
-There are 3 example file: index.php, index2.php, index3.php
-index.php and index3.php are simple multi requests to some endpoint.
-index2.php is an example using the rest api of the open data of public transport of Palermo city.
+
+There are 3 example file:
+
+1) index.php
+2) index2.php 
+3) index3.php
+
+index.php and index3.php are simple multi requests to some endpoint through the function "runmulticurl($urlarray);" where $urlarray is the array of the endpoints.
+
+index2.php is an example using multi requests to the rest api of the open data of public transport of Palermo city to get information about three bus stops concurrently, through the function "multicurlRestApi($urlarray, $postfield, $headers);" set in php class file class.curlmulti.php.
+
+---------------------------------------------------------------------------------------------
+EXAMPLE 2: index2.php
+
+include_once("./lib/class.curlmulti.php"); 
+$ref= new cURmultiStable;
+$urllinkarray = array('https://api.moovitapp.com/services-app/services/EX/API/GetStopArrivals',
+'https://api.moovitapp.com/services-app/services/EX/API/GetStopArrivals','https://api.moovitapp.com/services-app/services/EX/API/GetStopArrivals');
+$postfield = array("{\n\t\"stopKey\": \"1258\"\n}", "{\n\t\"stopKey\": \"1259\"\n}", "{\n\t\"stopKey\": \"1260\"\n}");
+$headers = array(array("api_key: amat_palermo_2317885288","content-type: application/json","user_loc: (38.115093,13.356520)"),
+array("api_key: amat_palermo_2317885288","content-type: application/json","user_loc: (38.115093,13.356520)"), 
+array("api_key: amat_palermo_2317885288","content-type: application/json","user_loc: (38.115093,13.356520)")); 
+$urls = $ref->multicurlRestApi($urllinkarray, $postfield, $headers);
+echo $urls[0];
+echo "<br>";
+echo $urls[1];
+echo "<br>";
+echo $urls[2];
+----------------------------------------------------------------------------------------------
+Simple, fast and easy ... And no CPU problems !!! 
