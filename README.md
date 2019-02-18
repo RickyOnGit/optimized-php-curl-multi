@@ -130,6 +130,6 @@ array("api_key: amat_palermo_2317885288","content-type: application/json","user_
 $urls = $ref->multicurlRestApi($urllinkarray, $postfield, $headers);<br>
 echo $urls[0];<br>
 echo $urls[1];<br>
-echo $urls[2];
+echo $urls[2];<br>
 ---------------------------------------------------------------------------------------------<br>
 Simple, fast and easy ... And no CPU problems !!! 
