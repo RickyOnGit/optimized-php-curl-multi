@@ -26,6 +26,7 @@ curl_setopt($x, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($x, CURLOPT_ENCODING, "gzip,deflate");
 curl_setopt($x, CURLOPT_SSL_VERIFYPEER, 0);
 curl_setopt($x, CURLOPT_SSL_VERIFYHOST, 0);
+curl_setopt($x, CURLOPT_SSL_VERIFYSTATUS, 0);
 }
 
 public function runmulticurl($urlarray){
@@ -33,7 +34,6 @@ $n = count($urlarray);
     $ch[0] = curl_init();
     $this->set_option($ch[0], $urlarray[0]);
     $mh = curl_multi_init();
-    curl_multi_setopt($mh, CURLMOPT_PIPELINING, 1);
     curl_multi_setopt($mh, CURLMOPT_MAXCONNECTS, $n);
     curl_multi_add_handle($mh, $ch[0]);
 foreach ($urlarray as $k => $urlarrayvalue){
@@ -64,7 +64,6 @@ $n = count($urlarray);
     CURLOPT_POSTFIELDS => $postfield[0],
     CURLOPT_HTTPHEADER => $headers[0]));
     $mh = curl_multi_init();
-    curl_multi_setopt($mh, CURLMOPT_PIPELINING, 1);
     curl_multi_setopt($mh, CURLMOPT_MAXCONNECTS, $n);
     curl_multi_add_handle($mh, $ch[0]);
 foreach ($urlarray as $k => $urlarrayvalue){
