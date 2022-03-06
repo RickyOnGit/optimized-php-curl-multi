@@ -1,3 +1,5 @@
+/*** TEST FILE n 1 ***/
+
 <?php
 include_once("./lib/class.curlmulti.php"); 
 $ref= new cURmultiStable;

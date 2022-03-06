@@ -30,6 +30,7 @@ curl_setopt($x, CURLOPT_SSL_VERIFYSTATUS, 0);
 }
 
 public function runmulticurl($urlarray){
+$results = array();
 $n = count($urlarray);    
     $ch[0] = curl_init();
     $this->set_option($ch[0], $urlarray[0]);
@@ -57,6 +58,7 @@ return $results;
 }
 
 public function multicurlRestApi($urlarray, $postfield, $headers){
+$results = array();
 $n = count($urlarray);    
     $ch[0] = curl_init();
     $this->set_option($ch[0], $urlarray[0]);
